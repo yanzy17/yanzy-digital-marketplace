@@ -1,9 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-type Props = { onOpenSettings: () => void };
-
-export default function Header({ onOpenSettings }: Props) {
+export default function Header() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -21,18 +19,11 @@ export default function Header({ onOpenSettings }: Props) {
         <span className="text-xs px-2 py-0.5 rounded font-semibold"
           style={{ background: "var(--accent)", color: "#000" }}>PRO</span>
       </div>
-      <div className="flex items-center gap-2">
-        <button onClick={onOpenSettings}
-          className="w-8 h-8 rounded-full flex items-center justify-center border"
-          style={{ borderColor: "var(--border)" }}>
-          🔑
-        </button>
-        <button onClick={() => setDark(!dark)}
-          className="w-8 h-8 rounded-full flex items-center justify-center border"
-          style={{ borderColor: "var(--border)" }}>
-          {dark ? "☀️" : "🌙"}
-        </button>
-      </div>
+      <button onClick={() => setDark(!dark)}
+        className="w-8 h-8 rounded-full flex items-center justify-center border"
+        style={{ borderColor: "var(--border)" }}>
+        {dark ? "☀️" : "🌙"}
+      </button>
     </header>
   );
 }
